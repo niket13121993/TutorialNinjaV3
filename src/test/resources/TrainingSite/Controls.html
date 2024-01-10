@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>More Controls</title>
+      <!-- Bootstrap CSS CDN -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <!-- Optional: Add your own custom CSS styles here -->
+      <link rel="stylesheet" type="text/css" href="css/Custom.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.9.2/jquery.contextMenu.min.css">
+   </head>
+   <body>
+      <header>
+         <h1>Welcome to Our Website</h1>
+      </header>
+      <nav>
+         <a href="HomePage.html">Home</a> |
+         <a href="ProductListingPage.html">Products</a> |
+         <a href="#">About Us</a> |
+         <a href="#">Contact</a> |
+         <a href="Controls.html">More Controls</a>
+      </nav>
+      <div class="container mt-5">
+         <h2>From Controls</h2>
+         <!-- Add Line break -->
+         <div class="row">
+            <div class="col-md-12 bs-linebreak-sm"></div>
+         </div>
+         <!-- Standard Text Input -->
+         <div class="form-group row">
+            <label class="col-sm-2 col-form-label text-right">Input field</label>
+            <div class="col-sm-4">
+               <input type="text" class="form-control" id="standardInput">
+            </div>
+            <label class="col-sm-2 col-form-label text-right">Text Area field</label>
+            <div class="col-sm-4">
+               <textarea rows = "3" type="text" class="form-control" id="textAreaInput"></textarea>
+            </div>
+         </div>
+         <!-- Read-Only and Disabled Text Input -->
+         <div class="form-group row">
+            <label class="col-sm-2 col-form-label text-right">Read-Only field</label>
+            <div class="col-sm-4">
+               <input type="text" class="form-control" id="readonlyInput" value="This is a read-only field" readonly>
+            </div>
+            <label class="col-sm-2 col-form-label text-right">Disabled field:</label>
+            <div class="col-sm-4">
+               <input type="text" class="form-control" id="disabledInput" value="This is a disabled field" disabled>
+            </div>
+         </div>
+         <!-- Hidden Text Input -->
+         <div class="form-group row">
+            <label class="col-sm-2 col-form-label text-right">Hidden field:</label>
+            <div class="col-sm-8">
+               <input class="form-control" id="hiddenInput" value="This is a Hidden field" style="display:none;">
+            </div>
+            <button class="btn-sm btn-primary col-sm-2" onClick="setTimeout(showHiddenField,3000)">Show Field</button>
+         </div>
+         <!-- Add Line break -->
+         <div class="row">
+            <div class="col-md-12 bs-linebreak-sm"></div>
+         </div>
+         <!-- Drop down controls -->
+         <!-- Country of Origin Dropdown -->
+         <div class="form-group row">
+            <label for="country" class="col-sm-2 col-form-label text-right">Country:</label>
+            <div class="col-sm-4">
+               <select id="country" class="form-control" onchange="getStates()">
+                  <!-- <select id="country" class="form-contol" onchange="setTimeout(getStates, 50000);"> -->
+                  <option value="">Select Country</option>
+               </select>
+            </div>
+            <label for="state" class="col-sm-2 col-form-label text-right">Region:</label>
+            <div class="col-sm-4">
+               <select id="state" class="form-control">
+                  <option value="">Select Region</option>
+               </select>
+            </div>
+         </div>
+         <div class="form-group row">
+            <label class="col-sm-2 col-form-label text-right">Select Month:</label>
+            <div class="col-sm-10">
+               <select class="form-control" name="optionlist" multiple>
+                  <option>January</option>
+                  <option>February</option>
+                  <option>March</option>
+                  <option>April</option>
+                  <option>May</option>
+                  <option>June</option>
+                  <option>July</option>
+                  <option>August</option>
+                  <option>September</option>
+                  <option>October</option>
+                  <option>November</option>
+                  <option>December</option>
+               </select>
+            </div>
+         </div>
+         <!-- Add Line break -->
+         <div class="row">
+            <div class="col-md-12 bs-linebreak-sm"></div>
+         </div>
+         <!-- Drag & Drop Event -->
+         <div class="form-group row">
+            <label class="col-sm-2 col-form-label text-right">Drag and Drop Event:</label>
+            <div class="droptarget col-sm-3" style="border:1px dotted black;">
+               <p draggable="true" id="dragtarget">Drag me!</p>
+            </div>
+            <p id="demo" class="col-sm-4 text-center"></p>
+            <div class="droptarget col-sm-3" style="border:1px dotted black;"></div>
+         </div>
+         <div class="form-group row">
+            <label class="col-sm-2 col-form-label text-right">Context Click Event:</label>
+            <span id="contextButton" class="col-sm-4 badge badge-pill badge-info align-middle">Right-click me!</span>
+            <label class="col-sm-2 col-form-label text-right">Double Click Event:</label>
+            <span id="contextButton" ondblclick="doubleClickEvent()" class="col-sm-4 badge badge-pill badge-info align-middle">Double-click me!</span>
+         </div>
+         <!-- Async JavaScript -->
+         <div class="form-group row">
+            <label class="col-sm-2 col-form-label text-right">Number of primes:</label>
+            <input type="text" class="form-control col-sm-2 mr-1" id="quota" name="quota" value="1000000" />
+            <button class="btn-sm btn-primary col-sm-2 mr-1" id="generate">Generate primes</button>
+            <button class="btn-sm btn-primary col-sm-2 mr-1" id="reload" disabled>Reload</button>
+            <class="col-sm-2 col-form-label text-left" id="output">
+         </div>
+         <!-- Add Line break -->
+         <div class="row">
+            <div class="col-md-12 bs-linebreak-sm"></div>
+         </div>
+         <!-- Alert buttons -->
+         <div class="form-group row">
+            <label class="col-sm-2 col-form-label text-right">Alert Buttons:</label>
+            <button class="btn-sm btn-primary col-sm-2 mr-1" onClick="displayAlert()">Alert Box</button>
+            <button class="btn-sm btn-primary col-sm-2 mr-1" onClick="displayConfirmation()">Confirm Box</button>
+            <button class="btn-sm btn-primary col-sm-2 mr-1" onClick="displayPrompt()">Prompt Box</button>
+            <label class="col-sm-3 col-form-label" id="alertMsg"></label>
+         </div>
+         <!-- Windows -->
+         <div class="form-group row">
+            <label class="col-sm-2 col-form-label text-right">Window Links:</label>
+            <a class="form-control col-sm-3 mr-1 badge badge-pill badge-info align-middle" id="googleLink" href="https://www.google.com" target="_blank" rel="noopener noreferrer">Google</a>
+            <a class="form-control col-sm-3 mr-1 badge badge-pill badge-info align-middle" id="tutorialNinjaLink" href="https://tutorialsninja.com/demo/" target="_blank" rel="noopener noreferrer">Tutorial Ninja</a>
+            <a class="form-control col-sm-3 mr-1 badge badge-pill badge-info align-middle" id="orangeHrmLink" target="popup" onclick="window.open('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login','name','width=1080,height=1100')">Orange HRM</a>
+         </div>
+         <!-- IFrames -->
+         <div class="form-group row" style="height:150px;">
+            <label class="col-sm-2 col-form-label text-right">IFrame1</label>
+            <iframe scrolling="no" class="col-sm-9"src="frames/IFrame1.html" name="iFrame1"></iframe>
+         </div>
+         <div class="form-group row" style="height:300px;">
+            <label class="col-sm-2 col-form-label text-right">IFrame2</label>
+            <iframe scrolling="no" class="col-sm-9"src="frames/IFrame2.html" name="iFrame2"></iframe>
+         </div>
+		 <!-- Add Line break -->
+         <div class="row">
+            <div class="col-md-12 bs-linebreak-sm"></div>
+         </div>
+		<form id="upload-form" enctype="multipart/form-data">
+		  <div class="form-group row">
+			<label class="col-sm-2 col-form-label text-right">File upload</label>
+			<input class="col-sm-8" type="file" id="file-input" name="uploadedFile" accept=".txt, .pdf, .docx, .bmp, .jpg" multiple>
+			<button class="col-sm-2 btn btn-primary"type="submit">Upload</button>
+		  </div>
+		  <div class="form-group row">
+			<label class="col-sm-2 col-form-label text-right">File upload using Drag</label>
+			<div class="col-sm-10" id="drop-area">
+				<p id="dragSection" class="text-center align-middle">Drag and drop files here or click to select files</p>
+				<input type="file" id="file-input-drag" style="display: none;" accept=".txt, .pdf, .docx, .bmp, .jpg" multiple>
+			</div>
+		  </div>
+		</form>
+		<div class="form-group row">
+		  <label class="col-sm-2 col-form-label text-right">Uploaded Files:</label>
+		  <table id="file-table" class="col-sm-10" border=1px>
+			<thead>
+				<tr>
+					<th>File Name</th>
+					<th>File Size</th>
+					<th>File Type</th>
+				</tr>
+			</thead>
+			<tbody id="file-list"></tbody>
+		  </table>
+		</div>
+
+		 
+		 
+		 
+		 
+		 
+      </div>
+      <!-- Bootstrap JS and Popper.js CDN (for Bootstrap features like modals, tooltips, etc.) -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.9.2/jquery.contextMenu.min.js"></script>
+      <!-- Custom JavaScript to dynamically populate State dropdown based on Country selection -->
+      <script>
+         function showHiddenField() {
+         	document.getElementById('hiddenInput').style.display = 'block';
+         }
+         function displayAlert() {
+         	alert("This is Alert box.\nPresse OK to continue.");
+         }
+         function displayConfirmation() {
+         	var txt;
+         	if (confirm("This is confirmation dialog.\nPress OK to confirm")) {
+         		txt = "You pressed OK!";
+         	} else {
+         		txt = "You pressed Cancel!";
+         	}
+         	document.getElementById("alertMsg").innerHTML = txt;
+         }
+         function displayPrompt() {
+         	let text;
+         	let person = prompt("Please enter your name:", "Harry Potter");
+         	if (person == null || person == "") {
+         		text = "User cancelled the prompt.";
+         	} else {
+         		text = "Hello " + person + "! How are you today?";
+         	}
+         	document.getElementById("alertMsg").innerHTML = text;
+         }
+         /* Events fired on the drag target */
+         document.addEventListener("dragstart", function(event) {
+           event.dataTransfer.setData("Text", event.target.id);
+         });
+         
+         document.addEventListener("drag", function(event) {
+           document.getElementById("demo").innerHTML = "The text is being dragged";
+         });
+         
+         /* Events fired on the drop target */
+         document.addEventListener("dragover", function(event) {
+           event.preventDefault();
+         });
+         
+         document.addEventListener("drop", function(event) {
+           event.preventDefault();
+           if ( event.target.className == "droptarget col-sm-3" ) {
+         	const data = event.dataTransfer.getData("Text");
+         	event.target.appendChild(document.getElementById(data));
+         	document.getElementById("demo").innerHTML = "The text was dropped";
+           }
+         });
+         
+         const MAX_PRIME = 1000000;
+         
+         function isPrime(n) {
+           for (let i = 2; i <= Math.sqrt(n); i++) {
+         	if (n % i === 0) {
+         	  return false;
+         	}
+           }
+           return n > 1;
+         }
+         
+         const random = (max) => Math.floor(Math.random() * max);
+         
+         function generatePrimes(quota) {
+           const primes = [];
+           while (primes.length < quota) {
+         	const candidate = random(MAX_PRIME);
+         	if (isPrime(candidate)) {
+         	  primes.push(candidate);
+         	}
+           }
+           return primes;
+         }
+         
+         const quota = document.querySelector("#quota");
+         const output = document.querySelector("#output");
+         
+         document.querySelector("#generate").addEventListener("click", () => {
+           const primes = generatePrimes(quota.value);
+           //asyncCall();
+           //generatePrimes(quota.value);
+           output.textContent = `Finished generating ${quota.value} primes!`;
+           const reloadEle = document.getElementById('reload');
+           reloadEle.disabled = false;
+           reloadEle.classList.remove('btn-secondary');
+           reloadEle.classList.add('btn-primary');
+         });
+         
+         document.querySelector("#reload").addEventListener("click", () => {
+           document.location.reload();
+         });
+         /*	
+         function resolveAfter2Seconds() {
+           return new Promise((resolve) => {
+         	setTimeout(() => {
+         	  resolve('resolved');
+         	}, 20000);
+           });
+         }
+         
+         async function asyncCall() {
+           console.log('calling');
+           const result = await resolveAfter2Seconds();
+           console.log(result);
+           // Expected output: "resolved"
+           output.textContent = `Finished generating ${quota.value} primes!`;
+           const reloadEle = document.getElementById('reload');
+           reloadEle.disabled = false;
+           reloadEle.classList.remove('btn-secondary');
+           reloadEle.classList.add('btn-primary'); 
+         } */
+         
+         /* CODE FOR LOADING DROP DOWNS */
+         $(document).ready(function() {
+           // Make an XHR GET request to retrieve country data
+           $.ajax({
+         	url: 'https://restcountries.com/v3.1/all',
+         	method: 'GET',
+         	dataType: 'json',
+         	success: function(data) {
+         	  // Handle the successful response
+         
+         	  // Extract countries from the response
+         	  var countries = data.map(function(country) {
+         		return {
+         		  name: country.name.common,
+         		  states: country.subregion ? country.subregion.split(',') : []
+         		};
+         	  });
+         
+         	  // Populate the country dropdown
+         	  populateDropdown('#country', countries.map(function(country) {
+         		return country.name;
+         	  }));
+         
+         	  // Populate the state dropdown based on the selected country
+         	  $('#country').on('change', function() {
+         		var selectedCountry = $(this).val();
+         		var selectedCountryInfo = countries.find(function(country) {
+         		  return country.name === selectedCountry;
+         		});
+         
+         		populateDropdown('#state', selectedCountryInfo ? selectedCountryInfo.states : []);
+         	  });
+         	},
+         	error: function(xhr, status, error) {
+         	  // Handle errors
+         	  console.error('XHR error:', status, error);
+         
+         	  // Display an error message on the page
+         	  $('body').append('<p>Error: ' + status + '</p>');
+         	}
+           });
+         
+           // Function to populate a dropdown with options
+           function populateDropdown(selector, options) {
+         	var dropdown = $(selector);
+         	dropdown.empty(); // Clear existing options
+         	options.forEach(function(option) {
+         	  dropdown.append($('<option></option>').text(option));
+         	});
+           }
+         });
+         
+         
+      </script>
+      <script>
+         // Define context menu items
+         var contextMenuItems = {
+           edit: { name: 'Edit', icon: 'edit' },
+           cut: { name: 'Cut', icon: 'cut' },
+           paste: { name: 'Paste', icon: 'paste' },
+           quit: { name: 'Quit', icon: 'quit' }
+         };
+         
+         // Initialize context menu
+         $.contextMenu({
+           selector: '#contextButton',
+           trigger: 'right',
+           callback: function(key, options) {
+             showAlert('You selected: ' + contextMenuItems[key].name);
+           },
+           items: contextMenuItems
+         });
+         
+         // Function to show an alert with the selected action
+         function showAlert(message) {
+           window.alert(message);
+         }
+         
+         /* DOUBLE CLICK CODE */
+         function doubleClickEvent() {
+         alert("You double clicked me.. Thank You..");    
+         }
+         
+      </script>
+	    <script>
+	const uploadForm = document.getElementById("upload-form");
+	const fileInput = document.getElementById("file-input");
+	const fileList = document.getElementById("file-list");
+
+	uploadForm.addEventListener("submit", function(event) {
+		event.preventDefault();
+		const files = fileInput.files;
+
+		for (const file of files) {
+			const row = fileList.insertRow();
+			const nameCell = row.insertCell(0);
+			const sizeCell = row.insertCell(1);
+			const typeCell = row.insertCell(2);
+
+			nameCell.textContent = file.name;
+			sizeCell.textContent = (file.size / 1024).toFixed(2) + " KB";
+			typeCell.textContent = file.type;
+		}
+
+		uploadForm.reset();
+	});
+	
+	const dropArea = document.getElementById("drop-area");
+	const fileInputDrag = document.getElementById("file-input-drag");
+	const fileListDrag = document.getElementById("file-list");
+
+	dropArea.addEventListener("dragover", (event) => {
+		event.preventDefault();
+		dropArea.classList.add("active");
+	});
+
+	dropArea.addEventListener("dragleave", () => {
+		dropArea.classList.remove("active");
+	});
+
+	dropArea.addEventListener("drop", (event) => {
+		event.preventDefault();
+		dropArea.classList.remove("active");
+		const files = event.dataTransfer.files;
+
+		for (const file of files) {
+			const row = fileListDrag.insertRow();
+			const nameCell = row.insertCell(0);
+			const sizeCell = row.insertCell(1);
+			const typeCell = row.insertCell(2);
+
+			nameCell.textContent = file.name;
+			sizeCell.textContent = (file.size / 1024).toFixed(2) + " KB";
+			typeCell.textContent = file.type;
+		}
+	});
+
+	dropArea.addEventListener("click", () => {
+		fileInputDrag.click();
+	});
+
+	fileInputDrag.addEventListener("change", () => {
+		const files = fileInputDrag.files;
+
+		for (const file of files) {
+			const row = fileListDrag.insertRow();
+			const nameCell = row.insertCell(0);
+			const sizeCell = row.insertCell(1);
+			const typeCell = row.insertCell(2);
+
+			nameCell.textContent = file.name;
+			sizeCell.textContent = (file.size / 1024).toFixed(2) + " KB";
+			typeCell.textContent = file.type;
+		}
+
+		fileInputDrag.value = null; // Clear the selected files
+	});
+	
+	
+  </script>
+   </body>
+</html>

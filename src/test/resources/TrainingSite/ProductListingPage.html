@@ -1,0 +1,178 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products List</title>
+  
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Optional: Add your own custom CSS styles here -->
+  <link rel="stylesheet" type="text/css" href="css/Custom.css">
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Our Website</h1>
+    </header>
+
+    <nav>
+        <a href="HomePage.html">Home</a> |
+        <a href="ProductListingPage.html">Products</a> |
+        <a href="#">About Us</a> |
+        <a href="#">Contact</a> |
+		<a href="Controls.html">More Controls</a>
+    </nav>
+	<div class="form-group row" id="btnGroup">
+		<button class="btn btn-primary col-sm-2" onClick="navigateToAddPage()">Add Product</button>
+	</div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Product Description</th>
+                <th>Price</th>
+                <th>Discount</th>
+                <th class="checkbox-column">Select</th>
+                <th class="edit-delete-column">Edit / Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Laptop</td>
+                <td>Powerful laptop with high-resolution display</td>
+                <td>$999</td>
+                <td>5%</td>
+                <td class="checkbox-column"><input type="checkbox"></td>
+                <td class="edit-delete-column">
+                    <span class="edit-icon">✎</span>
+                    <span class="delete-icon">❌</span>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Smartphone</td>
+                <td>Feature-rich smartphone with a large screen</td>
+                <td>$499</td>
+                <td>10%</td>
+                <td class="checkbox-column"><input type="checkbox"></td>
+                <td class="edit-delete-column">
+                    <span class="edit-icon">✎</span>
+                    <span class="delete-icon">❌</span>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Tablet</td>
+                <td>Compact tablet with long battery life</td>
+                <td>$299</td>
+                <td>8%</td>
+                <td class="checkbox-column"><input type="checkbox"></td>
+                <td class="edit-delete-column">
+                    <span class="edit-icon">✎</span>
+                    <span class="delete-icon">❌</span>
+                </td>
+            </tr>
+            <!-- Add more rows as needed -->
+            <tr>
+                <td>4</td>
+                <td>Headphones</td>
+                <td>High-quality over-ear headphones with noise cancellation</td>
+                <td>$149</td>
+                <td>15%</td>
+                <td class="checkbox-column"><input type="checkbox"></td>
+                <td class="edit-delete-column">
+                    <span class="edit-icon">✎</span>
+                    <span class="delete-icon">❌</span>
+                </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Camera</td>
+                <td>Professional-grade DSLR camera with multiple lenses</td>
+                <td>$799</td>
+                <td>12%</td>
+                <td class="checkbox-column"><input type="checkbox"></td>
+                <td class="edit-delete-column">
+                    <span class="edit-icon">✎</span>
+                    <span class="delete-icon">❌</span>
+                </td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Smartwatch</td>
+                <td>Smartwatch with fitness tracking and heart rate monitoring</td>
+                <td>$199</td>
+                <td>7%</td>
+                <td class="checkbox-column"><input type="checkbox"></td>
+                <td class="edit-delete-column">
+                    <span class="edit-icon">✎</span>
+                    <span class="delete-icon">❌</span>
+                </td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Wireless Mouse</td>
+                <td>Comfortable and ergonomic wireless mouse</td>
+                <td>$29</td>
+                <td>5%</td>
+                <td class="checkbox-column"><input type="checkbox"></td>
+                <td class="edit-delete-column">
+                    <span class="edit-icon">✎</span>
+                    <span class="delete-icon">❌</span>
+                </td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>External Hard Drive</td>
+                <td>High-capacity external hard drive for data storage</td>
+                <td>$129</td>
+                <td>10%</td>
+                <td class="checkbox-column"><input type="checkbox"></td>
+                <td class="edit-delete-column">
+                    <span class="edit-icon">✎</span>
+                    <span class="delete-icon">❌</span>
+                </td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Desk Chair</td>
+                <td>Ergonomic office chair with lumbar support</td>
+                <td>$199</td>
+                <td>8%</td>
+                <td class="checkbox-column"><input type="checkbox"></td>
+                <td class="edit-delete-column">
+                    <span class="edit-icon">✎</span>
+                    <span class="delete-icon">❌</span>
+                </td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>LED TV</td>
+                <td>Ultra HD LED TV with smart features</td>
+                <td>$599</td>
+                <td>15%</td>
+                <td class="checkbox-column"><input type="checkbox"></td>
+                <td class="edit-delete-column">
+                    <span class="edit-icon">✎</span>
+                    <span class="delete-icon">❌</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+	  <!-- Bootstrap JS and Popper.js CDN (optional) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script>
+		//Function demonstrating the Href Method
+		function navigateToAddPage(){
+			window.location.href = "AddProductPage.html";
+		}
+	</script>
+</body>
+
+</html>

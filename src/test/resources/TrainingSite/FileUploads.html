@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>More Controls</title>
+  
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Optional: Add your own custom CSS styles here -->
+  <link rel="stylesheet" type="text/css" href="css/Custom.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Website</h1>
+    </header>
+
+    <nav>
+        <a href="HomePage.html">Home</a> |
+        <a href="ProductListingPage.html">Products</a> |
+        <a href="#">About Us</a> |
+        <a href="#">Contact</a> |
+		<a href="Controls.html">More Controls</a>
+    </nav>
+  <div class="container mt-5">
+    <h2>File Upload section</h2>
+		
+	<form id="upload-form" enctype="multipart/form-data">
+	  <div class="form-group row">
+        <label class="col-sm-2 col-form-label text-right">File upload</label>
+		<input class="col-sm-6" type="file" id="file-input" name="uploadedFile" accept=".txt, .pdf, .docx, .bmp, .jpg" multiple>
+		<button class="col-sm-2 btn btn-primary"type="submit">Upload</button>
+      </div>
+	  <div class="row">
+		<div class="col-md-12 bs-linebreak-sm"></div>
+	  </div>
+	  <div class="form-group row">
+        <label class="col-sm-2 col-form-label text-right">File upload using Drag</label>
+		<div class="col-sm-8" id="drop-area">
+			<p id="dragSection" class="text-center align-middle">Drag and drop files here or click to select files</p>
+			<input type="file" id="file-input-drag" style="display: none;" accept=".txt, .pdf, .docx, .bmp, .jpg" multiple>
+		</div>
+	  </div>
+    </form>
+	<div class="row">
+		<div class="col-md-12 bs-linebreak"></div>
+	</div>
+	<br>
+    <table id="file-table" border=1px>
+        <thead>
+            <tr>
+                <th>File Name</th>
+                <th>File Size</th>
+                <th>File Type</th>
+            </tr>
+        </thead>
+        <tbody id="file-list"></tbody>
+    </table>
+  </div>
+
+  <!-- Bootstrap JS and Popper.js CDN (for Bootstrap features like modals, tooltips, etc.) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Custom JavaScript to dynamically populate State dropdown based on Country selection -->
+  <script>
+	const uploadForm = document.getElementById("upload-form");
+	const fileInput = document.getElementById("file-input");
+	const fileList = document.getElementById("file-list");
+
+	uploadForm.addEventListener("submit", function(event) {
+		event.preventDefault();
+		const files = fileInput.files;
+
+		for (const file of files) {
+			const row = fileList.insertRow();
+			const nameCell = row.insertCell(0);
+			const sizeCell = row.insertCell(1);
+			const typeCell = row.insertCell(2);
+
+			nameCell.textContent = file.name;
+			sizeCell.textContent = (file.size / 1024).toFixed(2) + " KB";
+			typeCell.textContent = file.type;
+		}
+
+		uploadForm.reset();
+	});
+	
+	const dropArea = document.getElementById("drop-area");
+	const fileInputDrag = document.getElementById("file-input-drag");
+	const fileListDrag = document.getElementById("file-list");
+
+	dropArea.addEventListener("dragover", (event) => {
+		event.preventDefault();
+		dropArea.classList.add("active");
+	});
+
+	dropArea.addEventListener("dragleave", () => {
+		dropArea.classList.remove("active");
+	});
+
+	dropArea.addEventListener("drop", (event) => {
+		event.preventDefault();
+		dropArea.classList.remove("active");
+		const files = event.dataTransfer.files;
+
+		for (const file of files) {
+			const row = fileListDrag.insertRow();
+			const nameCell = row.insertCell(0);
+			const sizeCell = row.insertCell(1);
+			const typeCell = row.insertCell(2);
+
+			nameCell.textContent = file.name;
+			sizeCell.textContent = (file.size / 1024).toFixed(2) + " KB";
+			typeCell.textContent = file.type;
+		}
+	});
+
+	dropArea.addEventListener("click", () => {
+		fileInputDrag.click();
+	});
+
+	fileInputDrag.addEventListener("change", () => {
+		const files = fileInputDrag.files;
+
+		for (const file of files) {
+			const row = fileListDrag.insertRow();
+			const nameCell = row.insertCell(0);
+			const sizeCell = row.insertCell(1);
+			const typeCell = row.insertCell(2);
+
+			nameCell.textContent = file.name;
+			sizeCell.textContent = (file.size / 1024).toFixed(2) + " KB";
+			typeCell.textContent = file.type;
+		}
+
+		fileInputDrag.value = null; // Clear the selected files
+	});
+	
+	
+  </script>
+</body>
+</html>

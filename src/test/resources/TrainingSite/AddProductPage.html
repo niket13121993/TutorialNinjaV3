@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Product</title>
+  
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Optional: Add your own custom CSS styles here -->
+  <link rel="stylesheet" type="text/css" href="css/Custom.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Website</h1>
+    </header>
+
+    <nav>
+        <a href="HomePage.html">Home</a> |
+        <a href="ProductListingPage.html">Products</a> |
+        <a href="#">About Us</a> |
+        <a href="#">Contact</a> |
+		<a href="Controls.html">More Controls</a>
+    </nav>
+  <div class="container mt-5">
+    <h2>Product Information Form</h2>
+
+    <form>
+
+      <!-- Product Name Text Input -->
+      <div class="form-group row">
+        <label for="productName" class="col-sm-4 col-form-label text-right">Product Name:</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" id="productName" placeholder="Enter product name">
+		</div>
+      </div>
+
+      <!-- Product Description Text Input -->
+      <div class="form-group row">
+        <label for="productDescription" class="col-sm-4 col-form-label text-right">Product Description:</label>
+		<div class="col-sm-6">
+			<textarea class="form-control" id="productDescription" rows="3" placeholder="Enter product description"></textarea>
+		</div>
+      </div>
+
+      <!-- Product Photo File Upload -->
+      <div class="form-group row">
+        <label for="productPhoto" class="col-sm-4 col-form-label text-right">Product Photo:</label>
+		<div class="col-sm-6">
+			<input type="file" class="form-control-file" id="productPhoto">
+		</div>
+      </div>
+
+      <!-- Country of Origin Dropdown -->
+      <div class="form-group row">
+		<label for="country" class="col-sm-4 col-form-label text-right">Country:</label>
+		<div class="col-sm-6">
+			<select id="country" class="form-control" onchange="getStates()">
+			<!-- <select id="country" class="form-contol" onchange="setTimeout(getStates, 50000);"> -->
+				<option value="">Select Country</option>
+			</select>
+		</div>
+      </div>
+
+      <!-- State Dropdown (Populated based on Country selection) -->
+      <div class="form-group row">
+		<label for="state" class="col-sm-4 col-form-label text-right">Capial:</label>
+		<div class="col-sm-6">
+			<select id="state" class="form-control">
+				<option value="">Select Capital</option>
+			</select>
+		</div>
+      </div>
+
+      <!-- Radio Button for In Stock -->
+	  	  <fieldset class="form-group">
+		<div class="row">
+		  <legend class="col-form-label col-sm-4 pt-0 text-right">In Stock Status</legend>
+		  <div class="col-sm-6">
+			<div class="form-check">
+				<input class="form-check-input" type="radio" name="stockStatus" id="inStock" value="inStock" checked>
+				<label class="form-check-label" for="inStock">In Stock</label>
+			</div>
+			<div class="form-check">
+				<input class="form-check-input" type="radio" name="stockStatus" id="outOfStock" value="outOfStock">
+				<label class="form-check-label" for="outOfStock">Out of Stock</label>
+			</div>
+		  </div>
+		</div>
+	  </fieldset>
+	  
+      <!-- Product Category Checkbox -->
+	  <fieldset class="form-group">
+		<div class="row">
+		  <legend class="col-form-label col-sm-4 pt-0 text-right">Product Category</legend>
+		  <div class="col-sm-6">
+			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="mobile" id="categoryMobile">
+			  <label class="form-check-label" for="categoryMobile">Mobile</label>
+			</div>
+			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="electronics" id="categoryElectronics">
+			  <label class="form-check-label" for="categoryElectronics">Electronics</label>
+			</div>
+			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="clothing" id="categoryClothing">
+			  <label class="form-check-label" for="categoryClothing">Clothing</label>
+			</div>
+			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="fashion" id="categoryFashion">
+			  <label class="form-check-label" for="categoryFashion">Fashion</label>
+			</div>
+			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="laptop" id="categoryLaptop">
+			  <label class="form-check-label" for="categoryLaptop">Laptop</label>
+			</div>
+			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="monitor" id="categoryMonitor">
+			  <label class="form-check-label" for="categoryMonitor">Monitor</label>
+			</div>
+		  </div>
+		</div>
+	  </fieldset>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+  </div>
+
+  <!-- Bootstrap JS and Popper.js CDN (for Bootstrap features like modals, tooltips, etc.) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Custom JavaScript to dynamically populate State dropdown based on Country selection -->
+<!--  <script>
+    function getCountries() {
+      var countryDropdown = document.getElementById("country");
+
+      // Replace 'YOUR_COUNTRY_API_ENDPOINT' with the actual URL of the countries API
+      fetch('https://restcountries.com/v2/all')
+        .then(response => response.json())
+        .then(data => {
+          data.forEach(country => {
+            var option = document.createElement("option");
+            option.value = country.alpha2Code;
+            option.text = country.name;
+            countryDropdown.appendChild(option);
+          });
+        })
+        .catch(error => console.error('Error fetching countries:', error));
+    }
+
+    function getStates() {
+      var countryDropdown = document.getElementById("country");
+      var stateDropdown = document.getElementById("state");
+      var selectedCountryCode = countryDropdown.value;
+
+      // Clear previous options in the state dropdown
+      stateDropdown.innerHTML = '<option value="">Select State</option>';
+
+      if (selectedCountryCode) {
+        // Use the same countries API for states, and filter based on the selected country
+        fetch(`https://restcountries.com/v3.1/alpha/${selectedCountryCode}`)
+          .then(response => response.json())
+          .then(data => {
+            data[0].capital.forEach(x => {
+              var option = document.createElement("option");
+              option.value = x;
+              option.text = x;
+              stateDropdown.appendChild(option);
+            });
+          })
+          .catch(error => console.error('Error fetching states:', error));
+      }
+    }
+
+    getCountries();  </script> -->
+	<script>
+	    $(document).ready(function() {
+      // Make an XHR GET request to retrieve country data
+      $.ajax({
+        url: 'https://restcountries.com/v3.1/all',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+          // Handle the successful response
+
+          // Extract countries from the response
+          var countries = data.map(function(country) {
+            return {
+              name: country.name.common,
+              states: country.subregion ? country.subregion.split(',') : []
+            };
+          });
+
+          // Populate the country dropdown
+          populateDropdown('#country', countries.map(function(country) {
+            return country.name;
+          }));
+
+          // Populate the state dropdown based on the selected country
+          $('#country').on('change', function() {
+            var selectedCountry = $(this).val();
+            var selectedCountryInfo = countries.find(function(country) {
+              return country.name === selectedCountry;
+            });
+
+            populateDropdown('#state', selectedCountryInfo ? selectedCountryInfo.states : []);
+          });
+        },
+        error: function(xhr, status, error) {
+          // Handle errors
+          console.error('XHR error:', status, error);
+
+          // Display an error message on the page
+          $('body').append('<p>Error: ' + status + '</p>');
+        }
+      });
+
+      // Function to populate a dropdown with options
+      function populateDropdown(selector, options) {
+        var dropdown = $(selector);
+        dropdown.empty(); // Clear existing options
+        options.forEach(function(option) {
+          dropdown.append($('<option></option>').text(option));
+        });
+      }
+    });
+	</script>
+</body>
+</html>
